@@ -1,45 +1,44 @@
 //
-// Created by Akshansh Gusain on 05/03/21.
+// Created by Akshansh Gusain on 16/10/21.
 //
-
-//Method 1: Using Stacks
-//Method 2: Using reversal of second half of the linked list
 
 #include<stdc++.h>
 
 using namespace std;
 
-struct Node {
+class Node {
+public:
     char data;
-    struct Node *next;
+    Node *next;
+
+    explicit Node(char data) {
+        this->data = data;
+        next = nullptr;
+    }
 };
 
-void push(struct Node **head_ref, char new_data) {
-    /* allocate node */
-    struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
-
-    /* put in the data */
-    new_node->data = new_data;
-
-    /* link the old list off the new node */
-    new_node->next = (*head_ref);
-
-    /* move the head to pochar to the new node */
-    (*head_ref) = new_node;
+void push(Node *&head, char value) {
+    Node *temp = new Node(value);
+    temp->next = head;
+    head = temp;
 }
 
+void print(Node *node) {
+    while (node != nullptr) {
+        if (node->next != nullptr) {
+            cout << node->data << "->";
+        } else {
+            cout << node->data;
+        }
 
-void printList(struct Node *ptr) {
-    while (ptr != NULL) {
-        printf("%c->", ptr->data);
-        ptr = ptr->next;
+        node = node->next;
     }
-    printf("NULL\n");
+    cout << endl;
 }
 
-void reverse(struct Node **head_ref) {
+void reverse(struct Node* &head_ref) {
     struct Node *prev = NULL;
-    struct Node *current = *head_ref;
+    struct Node *current = head_ref;
     struct Node *next;
     while (current != NULL) {
         next = current->next;
@@ -47,7 +46,7 @@ void reverse(struct Node **head_ref) {
         prev = current;
         current = next;
     }
-    *head_ref = prev;
+    head_ref = prev;
 }
 
 bool compareLists(struct Node *head1, struct Node *head2) {
@@ -71,17 +70,18 @@ bool compareLists(struct Node *head1, struct Node *head2) {
     return 0;
 }
 
-bool isPalindrome(struct Node *head) {
-    struct Node *slow_ptr = head, *fast_ptr = head;
-    struct Node *second_half, *prev_of_slow_ptr = head;
-    struct Node *midnode = NULL; // To handle odd size list
+
+bool isPalindrome(Node *&head) {
+     Node *slow_ptr = head, *fast_ptr = head;
+     Node *second_half, *prev_of_slow_ptr = head;
+     Node *midnode = nullptr; // To handle odd size list
     bool res = true; // initialize result
 
-    if (head != NULL && head->next != NULL) {
+    if (head != nullptr && head->next != nullptr) {
         /* Get the middle of the list. Move slow_ptr by 1
         and fast_ptrr by 2, slow_ptr will have the middle
         node */
-        while (fast_ptr != NULL && fast_ptr->next != NULL) {
+        while (fast_ptr != nullptr && fast_ptr->next != nullptr) {
             fast_ptr = fast_ptr->next->next;
 
             /*We need previous of the slow_ptr for
@@ -94,7 +94,7 @@ bool isPalindrome(struct Node *head) {
         And not NULL for odd elements. We need to skip the middle node
         for odd case and store it somewhere so that we can restore the
         original list*/
-        if (fast_ptr != NULL) {
+        if (fast_ptr != nullptr) {
             midnode = slow_ptr;
             slow_ptr = slow_ptr->next;
         }
@@ -102,15 +102,15 @@ bool isPalindrome(struct Node *head) {
         // Now reverse the second half and compare it with first half
         second_half = slow_ptr;
         prev_of_slow_ptr->next = NULL; // NULL terminate first half
-        reverse(&second_half); // Reverse the second half
+        reverse(second_half); // Reverse the second half
         res = compareLists(head, second_half); // compare
 
         /* Construct the original list back */
-        reverse(&second_half); // Reverse the second half again
+        reverse(second_half); // Reverse the second half again
 
         // If there was a mid node (odd size case) which
         // was not part of either first half or second half.
-        if (midnode != NULL) {
+        if (midnode != nullptr) {
             prev_of_slow_ptr->next = midnode;
             midnode->next = second_half;
         } else
@@ -119,40 +119,15 @@ bool isPalindrome(struct Node *head) {
     return res;
 }
 
-
 int main() {
-    struct Node* head = NULL;
-    char str[] = "abacaba";
-    int i;
+    string inputString = "abacabad";
+    Node *head = nullptr;
 
-    for (i = 0; str[i] != '\0'; i++) {
-        push(&head, str[i]);
-        printList(head);
-        isPalindrome(head) ? printf("Is Palindrome\n\n") : printf("Not Palindrome\n\n");
+    for (char i: inputString) {
+        push(head, i);
+        print(head);
+        isPalindrome(head)? cout<<"Palindrome" : cout<<"Not a Palindrome";
+        cout<<endl;
     }
-
     return 0;
 }
-
-/*
-a->NULL
-Is Palindrome
-
-b->a->NULL
-Not Palindrome
-
-a->b->a->NULL
-Is Palindrome
-
-c->a->b->a->NULL
-Not Palindrome
-
-a->c->a->b->a->NULL
-Not Palindrome
-
-b->a->c->a->b->a->NULL
-Not Palindrome
-
-a->b->a->c->a->b->a->NULL
-Is Palindrome
- */

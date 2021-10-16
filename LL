@@ -12,10 +12,10 @@ Intersection of two Sorted Linked List. ---- Technique(Two Pointer)
 Intersection Point of two Linked Lists. ---- Technique(Two Pointer)
 Merge Sort For Linked lists.[Very Important]
 Quicksort for Linked Lists.[Very Important]
-Find the middle Element of a linked list.
-Check if a linked list is a circular linked list.
-Split a Circular linked list into two halves.
-Write a Program to check whether the Singly Linked list is a palindrome or not.
+Find the middle Element of a linked list. ---- Technique(Slow and Fast pointer)
+Check if a linked list is a circular linked list. ---- Technique(Check if we reach the head node, while traversing).
+Split a Circular linked list into two halves. ---- Technique(Check if we reach the head node, while traversing).
+Write a Program to check whether the Singly Linked list is a palindrome or not. ---- Technique(reverse the second half and compare)
 Deletion from a Circular Linked List.
 Reverse a Doubly Linked list.
 Find pairs with a given sum in a DLL.
