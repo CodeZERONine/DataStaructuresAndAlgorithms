@@ -4,7 +4,6 @@
 // nodes, change prev of the head (or start) and change the head pointer in the end.
 
 #include<stdc++.h>
-
 using namespace std;
 
 class Node {

@@ -1,4 +1,8 @@
 //
+// Created by Akshansh Gusain on 21/10/21.
+//
+
+//
 // Created by Akshansh Gusain on 08/03/21.
 
 //Using Min Heap O(nlogK) time and O(k)space
@@ -6,26 +10,33 @@
 #include<stdc++.h>
 using namespace std;
 
-struct Node {
+class Node {
+public:
     int data;
-    struct Node* next;
+    Node* next;
+    explicit Node(int key){
+        data = key;
+        next = nullptr;
+    }
 };
 
-struct Node* newNode(int data)
-{
-    auto* new_node = new Node();
-    new_node->data = data;
-    new_node->next = NULL;
-
-    return new_node;
+void push(Node *&head, int value) {
+    Node *temp = new Node(value);
+    temp->next = head;
+    head = temp;
 }
 
-void printList(struct Node* head)
-{
-    while (head != nullptr) {
-        cout << head->data << " ";
-        head = head->next;
+void print(Node *node) {
+    while (node != nullptr) {
+        if (node->next != nullptr) {
+            cout << node->data << "->";
+        } else {
+            cout << node->data;
+        }
+
+        node = node->next;
     }
+    cout << endl;
 }
 
 // 'compare' function used to build up the priority queue
@@ -37,7 +48,8 @@ struct compare {
     }
 };
 
-struct Node* mergeKSortedLists(struct Node* arr[], int k){
+struct Node* mergeKSortedLists(vector<Node*> &arr){
+    int k = arr.size();
     // priority_queue 'pq' implemented
     // as min heap with the
     // help of 'compare' function
@@ -45,23 +57,27 @@ struct Node* mergeKSortedLists(struct Node* arr[], int k){
 
     // push the head nodes of all
     // the k lists in 'pq'
-    for (int i = 0; i < k; i++)
-        if (arr[i] != NULL)
+    for (int i = 0; i < k; i++){
+        if (arr[i] != nullptr){
             pq.push(arr[i]);
+            //cout<<arr[i]->data<<endl;
+        }
+
+    }
 
     // Handles the case when k = 0
     // or lists have no elements in them
     if (pq.empty())
-        return NULL;
+        return nullptr;
 
-    struct Node *dummy = newNode(0);
-    struct Node *last = dummy;
+    Node *dummy = new Node(0);
+    Node *last = dummy;
 
     // loop till 'pq' is not empty
     while (!pq.empty()) {
 
         // get the top element of 'pq'
-        struct Node* curr = pq.top();
+        Node* curr = pq.top();
         pq.pop();
 
         // add the top element of 'pq'
@@ -73,7 +89,7 @@ struct Node* mergeKSortedLists(struct Node* arr[], int k){
         // next to the 'top' node
         // in the list of which 'top'
         // node is a member
-        if (curr->next != NULL)
+        if (curr->next != nullptr)
             // push the next node of top node in 'pq'
             pq.push(curr->next);
     }
@@ -88,29 +104,35 @@ int main(){
 
     // an array of pointers storing the head nodes
     // of the linked lists
-    Node* arr[k];
+    //Node* arr[k];
+    vector<Node*> arr;
+    Node *head1 = nullptr, *head2 = nullptr, *head3 = nullptr;
 
     // creating k = 3 sorted lists
-    arr[0] = newNode(1);
-    arr[0]->next = newNode(3);
-    arr[0]->next->next = newNode(5);
-    arr[0]->next->next->next = newNode(7);
+    push(head1, 7);
+    push(head1, 5);
+    push(head1, 3);
+    push(head1, 1);
 
-    arr[1] = newNode(2);
-    arr[1]->next = newNode(4);
-    arr[1]->next->next = newNode(6);
-    arr[1]->next->next->next = newNode(8);
+    push(head2, 8);
+    push(head2, 6);
+    push(head2, 4);
+    push(head2, 2);
 
-    arr[2] = newNode(0);
-    arr[2]->next = newNode(9);
-    arr[2]->next->next = newNode(10);
-    arr[2]->next->next->next = newNode(11);
+    push(head3, 11);
+    push(head3, 10);
+    push(head3, 9);
+    push(head3, 0);
 
+    arr.push_back(head1);
+    arr.push_back(head2);
+    arr.push_back(head3);
     // merge the k sorted lists
-    struct Node* head = mergeKSortedLists(arr, k);
+
+    Node* head4 = mergeKSortedLists(arr);
 
     // print the merged list
-    printList(head);
+    print(head4);
 
     return 0;
 }

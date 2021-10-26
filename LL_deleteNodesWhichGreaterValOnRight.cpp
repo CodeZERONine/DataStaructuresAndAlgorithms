@@ -2,23 +2,23 @@
 // Created by Akshansh Gusain on 08/03/21.
 //
 #include <stdc++.h>
+
 using namespace std;
 
 /* structure of a linked list node */
-struct Node
-{
+struct Node {
     int data;
-    struct Node* next;
+    struct Node *next;
 };
 
 /* prototype for utility functions */
-void reverseList(struct Node** headref);
-void _delLesserNodes(struct Node* head);
+void reverseList(struct Node **headref);
+
+void _delLesserNodes(struct Node *head);
 
 /* Deletes nodes which have a node with
 greater value node on left side */
-void delLesserNodes(struct Node** head_ref)
-{
+void delLesserNodes(struct Node **head_ref) {
     /* 1) Reverse the linked list */
     reverseList(head_ref);
 
@@ -35,21 +35,18 @@ void delLesserNodes(struct Node** head_ref)
 
 /* Deletes nodes which have
 greater value node(s) on left side */
-void _delLesserNodes(struct Node* head)
-{
-    struct Node* current = head;
+void _delLesserNodes(struct Node *head) {
+    struct Node *current = head;
 
     /* Initialize max */
-    struct Node* maxnode = head;
-    struct Node* temp;
+    struct Node *maxnode = head;
+    struct Node *temp;
 
     while (current != NULL &&
-           current->next != NULL)
-    {
+           current->next != NULL) {
         /* If current is smaller than max,
         then delete current */
-        if (current->next->data < maxnode->data)
-        {
+        if (current->next->data < maxnode->data) {
             temp = current->next;
             current->next = temp->next;
             free(temp);
@@ -57,8 +54,7 @@ void _delLesserNodes(struct Node* head)
 
             /* If current is greater than max,
                 then update max and move current */
-        else
-        {
+        else {
             current = current->next;
             maxnode = current;
         }
@@ -67,22 +63,19 @@ void _delLesserNodes(struct Node* head)
 
 /* Utility function to insert a node
 at the beginning */
-void push(struct Node** head_ref, int new_data)
-{
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+void push(struct Node **head_ref, int new_data) {
+    struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
     new_node->data = new_data;
     new_node->next = *head_ref;
     *head_ref = new_node;
 }
 
 /* Utility function to reverse a linked list */
-void reverseList(struct Node** headref)
-{
-    struct Node* current = *headref;
-    struct Node* prev = NULL;
-    struct Node* next;
-    while (current != NULL)
-    {
+void reverseList(struct Node **headref) {
+    struct Node *current = *headref;
+    struct Node *prev = NULL;
+    struct Node *next;
+    while (current != NULL) {
         next = current->next;
         current->next = prev;
         prev = current;
@@ -92,20 +85,17 @@ void reverseList(struct Node** headref)
 }
 
 /* Utility function to print a linked list */
-void printList(struct Node* head)
-{
-    while (head != NULL)
-    {
-        cout << " " << head->data ;
+void printList(struct Node *head) {
+    while (head != NULL) {
+        cout << " " << head->data;
         head = head->next;
     }
-    cout << "\n" ;
+    cout << "\n";
 }
 
 /* Driver program to test above functions */
-int main()
-{
-    struct Node* head = NULL;
+int main() {
+    struct Node *head = NULL;
 
     /* Create following linked list
     12->15->10->11->5->6->2->3 */
@@ -118,12 +108,12 @@ int main()
     push(&head, 15);
     push(&head, 12);
 
-    cout << "Given Linked List \n" ;
+    cout << "Given Linked List \n";
     printList(head);
 
     delLesserNodes(&head);
 
-    cout << "Modified Linked List \n" ;
+    cout << "Modified Linked List \n";
     printList(head);
 
     return 0;

@@ -1,26 +1,46 @@
 //
-// Created by Akshansh Gusain on 08/03/21.
+// Created by Akshansh Gusain on 21/10/21.
 //
-
-#include <stdc++.h>
+#include<stdc++.h>
 using namespace std;
 
-/* a node of the singly linked list */
-class Node
-{
+class Node {
 public:
     int data;
     Node *next;
+
+    explicit Node(int data) {
+        this->data = data;
+        next = nullptr;
+    }
 };
 
-void segregateEvenOdd(Node **head_ref)
+void push(Node *&head, int value) {
+    Node *temp = new Node(value);
+    temp->next = head;
+    head = temp;
+}
+void print(Node *node) {
+    while (node != nullptr) {
+        if (node->next != nullptr) {
+            cout << node->data << "->";
+        } else {
+            cout << node->data;
+        }
+
+        node = node->next;
+    }
+    cout << endl;
+}
+
+void segregateEvenOdd(Node *&head_ref)
 {
-    Node *end = *head_ref;
-    Node *prev = NULL;
-    Node *curr = *head_ref;
+    Node *end = head_ref;
+    Node *prev = nullptr;
+    Node *curr = head_ref;
 
     /* Get pointer to the last node */
-    while (end->next != NULL)
+    while (end->next != nullptr)
         end = end->next;
 
     Node *new_end = end;
@@ -31,7 +51,7 @@ void segregateEvenOdd(Node **head_ref)
     {
         new_end->next = curr;
         curr = curr->next;
-        new_end->next->next = NULL;
+        new_end->next->next = nullptr;
         new_end = new_end->next;
     }
 
@@ -42,7 +62,7 @@ void segregateEvenOdd(Node **head_ref)
     {
         /* Change the head pointer to
         point to first even node */
-        *head_ref = curr;
+        head_ref = curr;
 
         /* now current points to
         the first even node */
@@ -60,7 +80,7 @@ void segregateEvenOdd(Node **head_ref)
                 prev->next = curr->next;
 
                 /* Make next of curr as NULL */
-                curr->next = NULL;
+                curr->next = nullptr;
 
                 /* Move curr to end */
                 new_end->next = curr;
@@ -86,63 +106,36 @@ void segregateEvenOdd(Node **head_ref)
     if (new_end != end && (end->data) % 2 != 0)
     {
         prev->next = end->next;
-        end->next = NULL;
+        end->next = nullptr;
         new_end->next = end;
     }
     return;
 }
 
-/* UTILITY FUNCTIONS */
-/* Function to insert a node at the beginning */
-void push(Node** head_ref, int new_data)
-{
-    /* allocate node */
-    Node* new_node = new Node();
 
-    /* put in the data */
-    new_node->data = new_data;
-
-    /* link the old list off the new node */
-    new_node->next = (*head_ref);
-
-    /* move the head to point to the new node */
-    (*head_ref) = new_node;
-}
-
-/* Function to print nodes in a given linked list */
-void printList(Node *node)
-{
-    while (node != NULL)
-    {
-        cout << node->data <<" ";
-        node = node->next;
-    }
-}
-
-/* Driver code*/
 int main()
 {
     /* Start with the empty list */
-    Node* head = NULL;
+    Node* head = nullptr;
 
     /* Let us create a sample linked list as following
     0->2->4->6->8->10->11 */
 
-    push(&head, 11);
-    push(&head, 10);
-    push(&head, 8);
-    push(&head, 6);
-    push(&head, 4);
-    push(&head, 2);
-    push(&head, 0);
+    push(head, 11);
+    push(head, 10);
+    push(head, 8);
+    push(head, 6);
+    push(head, 4);
+    push(head, 2);
+    push(head, 0);
 
     cout << "Original Linked list ";
-    printList(head);
+    print(head);
 
-    segregateEvenOdd(&head);
+    segregateEvenOdd(head);
 
     cout << "\nModified Linked list ";
-    printList(head);
+    print(head);
 
     return 0;
 }

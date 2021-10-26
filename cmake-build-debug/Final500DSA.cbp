@@ -78,7 +78,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/LL_018.cpp">
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/DP_001.cpp">
+			<Option target="Final500DS"/>
+		</Unit>
+		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/DP_002.cpp">
 			<Option target="Final500DS"/>
 		</Unit>
 		<Unit filename="/Users/akshanshgusain/CLionProjects/Final500DSA/CMakeLists.txt">
