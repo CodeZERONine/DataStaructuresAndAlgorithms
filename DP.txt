@@ -1,3 +1,13 @@
 0-1 KNAPSACK
+
 0-1 Knapsack.(Memoization)
 0-1 Knapsack.(Top-Down)
+Subset sum.
+Equal sum partition.
+Count of subset sum with a given sum.
+Minimum subset sum difference.
+Count of subset sum with a given sum.
+Count the number of subset with a given difference.
+Target Sum. ---Technique(Count the number of subset with a given difference.)
+
+Unbound Knapsack

@@ -31,8 +31,8 @@ int countSubsetSum(int arr[], int sum, int n) {
 }
 
 int main(){
-    int arr[] = {1, 5, 3, 7, 4};
-
+    //int arr[] = {1, 5, 3, 7, 4};
+    int arr[] = {1,1,3,2};
     int n = sizeof(arr) / sizeof(arr[0]);
     /* sum (S1) = (diff + sum(Array) )/2*/
     int sum = 0;
