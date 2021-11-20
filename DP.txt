@@ -11,3 +11,10 @@ Count the number of subset with a given difference.
 Target Sum. ---Technique(Count the number of subset with a given difference.)
 
 Unbound Knapsack
+Rod Cutting.
+Coin Change 1- Max Ways.
+Coin Change 2- Min Coins.
+
+Longest Common Sub-Sequence
+
+Longest Common Subsequence.
