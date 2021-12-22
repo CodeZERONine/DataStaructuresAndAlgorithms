@@ -33,7 +33,8 @@ int lAS(vector<int> arr, int n){
 }
 
 int main(){
-    vector<int> arr = { 10, 22, 9, 33, 49, 50, 31, 60 };
+    vector<int> arr = { 1,17,5,10,13,15,10,5,16,8 };
+//    vector<int> arr = { 10, 22, 9, 33, 49, 50, 31, 60 };
     int n = arr.size();
     cout<<lAS(arr, n);
 }

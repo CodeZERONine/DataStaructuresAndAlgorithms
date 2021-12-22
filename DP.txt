@@ -1,4 +1,4 @@
-0-1 KNAPSACK
+0-1 KNAPSACK - 09Q
 
 0-1 Knapsack.(Memoization)
 0-1 Knapsack.(Top-Down)
@@ -10,11 +10,42 @@ Count of subset sum with a given sum.
 Count the number of subset with a given difference.
 Target Sum. ---Technique(Count the number of subset with a given difference.)
 
-Unbound Knapsack
+Unbound Knapsack - 03Q
 Rod Cutting.
 Coin Change 1- Max Ways.
 Coin Change 2- Min Coins.
 
-Longest Common Sub-Sequence
+Longest Common Sub-Sequence - 10Q
 
-Longest Common Subsequence.
+Longest Common Subsequence.(Memoization)
+Longest Common Subsequence.(Top-Down)
+Longest Common Sub-String.
+Print longest common subsequence.
+Shortest Common super-sequence.
+Print Shortest Common super-sequence.------ Similar to Print LCS.
+Min. number of insertions and deletions to convert a string X to Y.
+Longest Repeating Subsequence.------ Similar to LCS with one additional condition.
+Longest Common Subsequence of 3 Strings.------ Similar to LCS.
+Sequence Pattern matching.
+
+Longest Increasing Sub-Sequence - 08Q
+
+Longest Increasing Subsequence.(Top-Down) O(N^2)
+Longest Increasing Subsequence. O(NlogN)
+Min. deletions to make subsequence sorted.----(Length of sequence - LIS)
+Longest Bitonic Subsequence. Similar to LIS
+Longest Alternating Subsequence.
+Maximum Sum Increasing Subsequence.
+Longest subsequence such that difference between adjacent is one.
+Maximum Length Chain of Pairs.
+
+
+Palindrome Subsequence - a variation of LCS
+
+41. Longest palindromic Subsequence. (LPS)
+42. Minimum number of deletions in a string to make it a palindrome.( String Length - LPS)
+
+
+Matrix Chain Multiplication
+
+43.

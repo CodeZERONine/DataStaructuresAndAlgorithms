@@ -3,4 +3,4 @@ project(Final500DSA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Final500DS DP_005.cpp)
+add_executable(Final500DS  DP_042.cpp)
