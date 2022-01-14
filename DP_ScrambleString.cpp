@@ -24,6 +24,7 @@ bool solve(string a, string b) {
     bool flag = false;
 
     for (int i = 1; i < n; i++) {
+
         if ((solve(a.substr(0, i), b.substr(0, i))
              && solve(a.substr(i), b.substr(i)))
             or

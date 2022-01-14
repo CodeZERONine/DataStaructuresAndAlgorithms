@@ -51,7 +51,7 @@ int main(){
     printf("\nMinimum number of trials "
            "in worst case with %d eggs and "
            "%d floors is %d \n",
-           n, k, eggDrop(n, k));
+           n, k, eggDrop(n, k)); //8
     return 0;
 }
 

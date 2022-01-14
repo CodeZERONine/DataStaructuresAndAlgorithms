@@ -75,7 +75,7 @@ int parenthesis_count(string s,int i,int j,int isTrue) {
 
 int main() {
     memset(dp, -1, sizeof dp);
-    string expression = "T|T&F^T";
+    string expression = "T|T&F^T"; //4
     cout << parenthesis_count(expression, 0, expression.length() - 1, true);
     return 0;
 }

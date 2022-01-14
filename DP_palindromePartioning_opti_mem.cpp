@@ -27,6 +27,7 @@ int minPalPartion(string String, int i, int j) {
     for (int k = i; k < j; k++) {
 
         int left,right;
+
         if(dp[i][k] != -1){
             left = dp[i][k];
         }else{

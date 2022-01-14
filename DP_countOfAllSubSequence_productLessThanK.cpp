@@ -1,12 +1,16 @@
 //
 // Created by Akshansh Gusain on 01/06/21.
-//
+//https://www.youtube.com/watch?v=iOjV84903WA
 #include<stdc++.h>
 
 using namespace std;
 
 int productSubSeqCount(vector<int> &arr, int k) {
     int n = arr.size();
+    //  dp[i][j] = number of subsequences having product less than i using first j terms of the array.
+
+    //Which can be obtained by : number of subsequences using first j-1 terms + number of subsequences
+    // that can be formed using j-th term.
     int dp[k + 1][n + 1];
     memset(dp, 0, sizeof(dp));
 
@@ -20,8 +24,8 @@ int productSubSeqCount(vector<int> &arr, int k) {
             // thus it won't contribute then
             if (arr[j - 1] <= i && arr[j - 1] > 0)
 
-                // number of subsequence using 1 to j-1 terms
-                // and j-th term
+                // number of subsequence using 1 to j-1 terms = dp[i / arr[j - 1]][j - 1]
+                // and j-th term = 1
                 dp[i][j] += dp[i / arr[j - 1]][j - 1] + 1;
         }
     }
