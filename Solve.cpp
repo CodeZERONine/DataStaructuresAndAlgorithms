@@ -69,29 +69,6 @@ void printLL(ListNode *head) {
 }
 
 
-void removeElements(ListNode *head, int val) {
-    if (head == nullptr) {
-        return;
-    }
-
-    // Edge case where first node has the value = val
-    while (head != nullptr and head->val == val) {
-        head = head->next;
-    }
-
-    ListNode *curr = head;
-    ListNode *prev = nullptr;
-
-    while (curr != nullptr) {
-        if (curr->val == val) {
-            prev->next = curr->next;
-            curr = curr->next;
-        } else {
-            prev = curr;
-            curr = curr->next;
-        }
-    }
-}
 
 ListNode *reverseLL(ListNode *head) {
     if (head == nullptr or head->next == nullptr) {
