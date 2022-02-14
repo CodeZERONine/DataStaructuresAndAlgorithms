@@ -33,7 +33,6 @@ int diameter(struct node* tree){
     if(tree == nullptr){
         return 0;
     }
-
     int lHeight = height(tree->left);
     int rHeight = height(tree->right);
 

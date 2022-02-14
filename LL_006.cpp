@@ -31,12 +31,17 @@ void print(Node* node){
 }
 
 Node* deleteDuplicates(Node* head){
-    Node* newHead = head;
-    while(newHead != nullptr){
-        if(newHead->data == newHead->next->data){
-            newHead-> next = newHead->next->next;
+    if (head == nullptr || head->next == nullptr){
+        return head;
+    }
+    Node *currentHead = head;
+
+    while(currentHead->next != nullptr){
+        if(currentHead->data == currentHead->next->data){
+            currentHead->next = currentHead->next->next;
+        }else{
+            currentHead = currentHead->next;
         }
-        newHead = newHead->next;
     }
     return head;
 }

@@ -19,7 +19,9 @@ int editDistance(string s1, string s2, int n, int m, vector<vector<int>> &dp) {
     // To check if the recursive tree
     // for given n & m has already been executed
 
-    if (dp[n][m] != -1) return dp[n][m];
+    if (dp[n][m] != -1){
+        return dp[n][m];
+    }
 
 
     // If characters are equal, execute

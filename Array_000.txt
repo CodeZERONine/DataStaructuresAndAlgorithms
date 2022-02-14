@@ -49,3 +49,8 @@ Find a specific pair in matrix.    ----- ( technique: Pre-Sum)
 Rotate matrix by 90 degrees.   ----- ( technique: Transpose and reverse)
 Kth smallest element in a row-column wise sorted matrix.    ----- ( technique: MinHeap)
 Common elements in all rows of a given matrix
+
+
+
+52 .How Many Numbers Are Smaller Than the Current Number.     ----- ( technique: Buckets)
+53. Count Number of Pairs With Absolute Difference K. (maps or binary search).
