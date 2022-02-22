@@ -2,6 +2,7 @@
 // Created by Akshansh Gusain on 21/10/21.
 //
 #include<stdc++.h>
+
 using namespace std;
 
 class Node {
@@ -20,6 +21,7 @@ void push(Node *&head, int value) {
     temp->next = head;
     head = temp;
 }
+
 void print(Node *node) {
     while (node != nullptr) {
         if (node->next != nullptr) {
@@ -33,8 +35,7 @@ void print(Node *node) {
     cout << endl;
 }
 
-void segregateEvenOdd(Node *&head_ref)
-{
+void segregateEvenOdd(Node *&head_ref) {
     Node *end = head_ref;
     Node *prev = nullptr;
     Node *curr = head_ref;
@@ -47,8 +48,7 @@ void segregateEvenOdd(Node *&head_ref)
 
     /* Consider all odd nodes before the first
      even node and move them after end */
-    while (curr->data % 2 != 0 && curr != end)
-    {
+    while (curr->data % 2 != 0 && curr != end) {
         new_end->next = curr;
         curr = curr->next;
         new_end->next->next = nullptr;
@@ -58,23 +58,18 @@ void segregateEvenOdd(Node *&head_ref)
     // 10->8->17->17->15
     /* Do following steps only if
     there is any even node */
-    if (curr->data%2 == 0)
-    {
+    if (curr->data % 2 == 0) {
         /* Change the head pointer to
         point to first even node */
         head_ref = curr;
 
         /* now current points to
         the first even node */
-        while (curr != end)
-        {
-            if ( (curr->data) % 2 == 0 )
-            {
+        while (curr != end) {
+            if ((curr->data) % 2 == 0) {
                 prev = curr;
                 curr = curr->next;
-            }
-            else
-            {
+            } else {
                 /* break the link between
                 prev and current */
                 prev->next = curr->next;
@@ -103,8 +98,7 @@ void segregateEvenOdd(Node *&head_ref)
     and end of original list is odd then
     move this node to end to maintain
     same order of odd numbers in modified list */
-    if (new_end != end && (end->data) % 2 != 0)
-    {
+    if (new_end != end && (end->data) % 2 != 0) {
         prev->next = end->next;
         end->next = nullptr;
         new_end->next = end;
@@ -113,10 +107,9 @@ void segregateEvenOdd(Node *&head_ref)
 }
 
 
-int main()
-{
+int main() {
     /* Start with the empty list */
-    Node* head = nullptr;
+    Node *head = nullptr;
 
     /* Let us create a sample linked list as following
     0->2->4->6->8->10->11 */

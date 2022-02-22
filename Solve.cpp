@@ -21,7 +21,7 @@ struct Node {
         right = nullptr;
     }
 
-    Node(int key, Node *left, Node *right) {
+    __attribute__((unused)) Node(int key, Node *left, Node *right) {
         data = key;
         this->left = left;
         this->right = right;
@@ -59,6 +59,13 @@ void addAtEnd(ListNode **head, int data) {
     last->next = myNode;
 }
 
+void addAtStart(ListNode **head, int data){
+    auto myNode = new ListNode(data);
+    myNode->next = *head;
+    *head = myNode;
+}
+
+
 void printLL(ListNode *head) {
     ListNode *curr = head;
     while (curr != nullptr) {
@@ -69,58 +76,20 @@ void printLL(ListNode *head) {
 }
 
 
-
-ListNode *reverseLL(ListNode *head) {
-    if (head == nullptr or head->next == nullptr) {
-        return head;
-    }
-    ListNode *remainingList = reverseLL(head->next);
-    head->next->next = head;
-    head->next = nullptr;
-
-    return remainingList;
-}
-
-bool isPalindrom(ListNode *head) {
-    if (head == nullptr or head->next == nullptr) {
-        return true;
-    }
-    ListNode *slow = head;
-    ListNode *fast = head;
-
-    while (fast->next != nullptr and fast->next->next != nullptr) {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-
-    slow->next = reverseLL(slow->next);
-    slow = slow->next;
-
-
-    while(slow!= nullptr){
-        if(head->val != slow->val){
-            return false;
-        }
-        head = head->next;
-        slow = slow->next;
-    }
-    return true;
-}
-
-
 int main() {
     ListNode *head = nullptr;
     addAtEnd(&head, 1);
     addAtEnd(&head, 2);
-    addAtEnd(&head, 6);
-    addAtEnd(&head, 3);
     addAtEnd(&head, 4);
-    addAtEnd(&head, 5);
-    addAtEnd(&head, 6);
-    printLL(head);
+    addAtEnd(&head, 3);
 
+    ListNode *head1 = nullptr;
+    addAtEnd(&head1, 9);
+    addAtEnd(&head1, 9);
+    //addAtEnd(&head1, 4);
+    printLL(head); printLL(head1);
 
-    cout << isPalindrom(head) << endl;
-    printLL(head);
+    printLL(addTwoNumbers(head,head1));
+
     return 0;
 }

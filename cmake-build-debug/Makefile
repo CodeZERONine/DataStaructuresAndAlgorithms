@@ -129,29 +129,29 @@ Final500DS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/build
 .PHONY : Final500DS/fast
 
-Solve.o: Solve.cpp.o
-.PHONY : Solve.o
+BST_000.o: BST_000.cpp.o
+.PHONY : BST_000.o
 
 # target to build an object file
-Solve.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Solve.cpp.o
-.PHONY : Solve.cpp.o
+BST_000.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/BST_000.cpp.o
+.PHONY : BST_000.cpp.o
 
-Solve.i: Solve.cpp.i
-.PHONY : Solve.i
+BST_000.i: BST_000.cpp.i
+.PHONY : BST_000.i
 
 # target to preprocess a source file
-Solve.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Solve.cpp.i
-.PHONY : Solve.cpp.i
+BST_000.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/BST_000.cpp.i
+.PHONY : BST_000.cpp.i
 
-Solve.s: Solve.cpp.s
-.PHONY : Solve.s
+BST_000.s: BST_000.cpp.s
+.PHONY : BST_000.s
 
 # target to generate assembly for a file
-Solve.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/Solve.cpp.s
-.PHONY : Solve.cpp.s
+BST_000.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final500DS.dir/build.make CMakeFiles/Final500DS.dir/BST_000.cpp.s
+.PHONY : BST_000.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Final500DS"
-	@echo "... Solve.o"
-	@echo "... Solve.i"
-	@echo "... Solve.s"
+	@echo "... BST_000.o"
+	@echo "... BST_000.i"
+	@echo "... BST_000.s"
 .PHONY : help
 
 
