@@ -26,6 +26,8 @@ public:
     }
 };
 
+// Leetcode Question
+
 Node *buildGraph() {
     /*
     Note : All the edges are Undirected
@@ -45,18 +47,18 @@ Node *buildGraph() {
     neighbors.push_back(node2);
     neighbors.push_back(node4);
     node1->neighbors = neighbors;
-    neighbors.clear();
 
+    neighbors.clear();
     neighbors.push_back(node1);
     neighbors.push_back(node3);
     node2->neighbors = neighbors;
-    neighbors.clear();
 
+    neighbors.clear();
     neighbors.push_back(node2);
     neighbors.push_back(node4);
     node3->neighbors = neighbors;
-    neighbors.clear();
 
+    neighbors.clear();
     neighbors.push_back(node3);
     neighbors.push_back(node1);
     node4->neighbors = neighbors;

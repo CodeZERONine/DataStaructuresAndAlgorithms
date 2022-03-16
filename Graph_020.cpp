@@ -26,7 +26,7 @@ int findParent(int node) {
     if (node == parent[node]) {
         return node;
     }
-
+    // Path compression
     return parent[node] = findParent(parent[node]);
 }
 

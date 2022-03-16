@@ -70,6 +70,6 @@ int main() {
     root->right->right = new Node(5);
     root->left->left = new Node(1);
 
-    map<Node *, int> map;
+    map<Node *, int> map; // Memoization
     cout << getMaxSum(root, map) << endl;
 }

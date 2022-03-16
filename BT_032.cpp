@@ -57,7 +57,7 @@ void printPath(Node *root, vector<int> &path, int k){
         }
     }
 
-    path.pop_back();
+    path.pop_back(); //backtrack
 }
 
 int main() {

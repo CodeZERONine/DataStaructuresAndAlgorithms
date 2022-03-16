@@ -52,7 +52,7 @@ int main() {
            10
        0--------1
        | \ |
-   6| 5\ |15
+         6| 5\ |15
        | \ |
        2--------3
            4
@@ -89,6 +89,12 @@ int main() {
 
     cout << cost << endl;
     for(auto it : mst) cout << it.first << " - " << it.second << endl;
+
+    /*
+     19
+    2 - 3
+    0 - 3
+    0 - 1*/
 
     return 0;
 }

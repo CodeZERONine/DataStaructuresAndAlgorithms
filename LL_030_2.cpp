@@ -47,7 +47,7 @@ void printWRandom(Node *node) {
     cout << endl;
 }
 
-Node *clone(Node *&head) {
+Node *clone(Node *head) {
     Node *curr = head;
     Node *temp = nullptr;
 
@@ -108,3 +108,23 @@ int main() {
 
     return 0;
 }
+
+/*
+Original linked list
+1->2->3->4->5
+N: 1, Random: 3
+N: 2, Random: 4
+N: 3, Random: 5
+N: 4, Random: -1
+N: 5, Random: 2
+
+Cloned linked list
+1->2->3->4->5
+N: 1, Random: 3
+N: 2, Random: 4
+N: 3, Random: 5
+N: 4, Random: -1
+N: 5, Random: 2
+
+
+ */

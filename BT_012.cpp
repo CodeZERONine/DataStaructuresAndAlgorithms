@@ -67,6 +67,24 @@ void topView(Node *root) {
     }
 }
 
+//void findVerticalOrder(Node *root,int hd ,map<int, vector<int>> &map){
+//    if(root == nullptr){
+//        return;
+//    }
+//
+//    map[hd].push_back(root->data);
+//    findVerticalOrder(root->left, hd-1, map);
+//    findVerticalOrder(root->right, hd+1, map);
+//}
+//
+//void top2(Node *root){
+//    map<int, vector<int>> ma;
+//    findVerticalOrder(root, 0,ma);
+//
+//    for(auto it: ma){
+//        cout<<it.second[0]<<" ";
+//    }
+//}
 
 int main() {
     Node *root = new Node(1);
@@ -75,9 +93,19 @@ int main() {
     root->left->right = new Node(4);
     root->left->right->right = new Node(5);
     root->left->right->right->right = new Node(6);
+//    Node *root = new Node(1);
+//    root->left = new Node(2);
+//    root->right = new Node(3);
+//    root->left->left = new Node(4);
+//    root->left->right = new Node(5);
+//    root->right->left = new Node(6);
+//    root->right->right = new Node(7);
+//    root->right->left->right = new Node(8);
+//    root->right->right->right = new Node(9);
 
     cout << "Vertical order traversal is \n";
     topView(root);
+    //top2(root);
 
     /*
      Vertical order traversal is

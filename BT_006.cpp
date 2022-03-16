@@ -28,7 +28,7 @@ struct Node {
     }
 };
 
-void inOrderTraversal(Node *root) {
+void preOrderTraversal(Node *root) {
     if (root == nullptr) {
         return;
     } else {

@@ -86,6 +86,8 @@ int diameterOptimised(Node *root) {  //Time: O(N)
     return ans;
 }
 
+// The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes.
+
 int main() {
     /* Constructed binary tree is
             1

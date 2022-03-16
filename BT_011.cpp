@@ -29,7 +29,7 @@ struct Node {
     }
 };
 
-void leftView(Node *root, int currentLevel, int *maxLevel) {
+void rightView(Node *root, int currentLevel, int *maxLevel) {
     if (root == nullptr) {
         return;
     }
@@ -40,11 +40,11 @@ void leftView(Node *root, int currentLevel, int *maxLevel) {
     }
 
     if (root->right != nullptr) {
-        leftView(root->right, currentLevel + 1, maxLevel);
+        rightView(root->right, currentLevel + 1, maxLevel);
     }
 
     if (root->left != nullptr) {
-        leftView(root->left, currentLevel + 1, maxLevel);
+        rightView(root->left, currentLevel + 1, maxLevel);
     }
 
 }
@@ -69,6 +69,6 @@ int main() {
     root->right->right->right = new Node(8);
 
     int maxLevel = INT_MIN;
-    leftView(root, 1, &maxLevel); //1 3 7 8
+    rightView(root, 1, &maxLevel); //1 3 7 8
     return 0;
 }

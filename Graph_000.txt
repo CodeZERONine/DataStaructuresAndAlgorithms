@@ -1,7 +1,7 @@
 Create a Graph, print it
 Implement BFS algorithm. (Queue)
 Implement DFS Algo. (Recursion Calls, Same as trees)
-Implement Topological Sort using DFS/Kahn's.
+Implement Topological Sort using DFS/Kahn's. ------(Technique: cal. use stack in DFS and indegree in BFS)
 Detect Cycle in Directed Graph using BFS/DFS Algo
 Detect Cycle in UnDirected Graph using BFS/DFS Algo
 Search in a Maze. ------(Technique: Make DFS Calls in 4 dirs and backtrack)
@@ -13,7 +13,7 @@ word Ladder. ------(Technique: BFS)
 Dijkstra algo.
 Minimum time taken by each job to be completed given by a Directed Acyclic Graph. ------(Technique: BFS + InDegree)
 Find whether it is possible to finish all tasks or not from given dependencies. ------(Technique: BFS + InDegree)
-Find the no. of Islands. ------(Technique: DFS, find Disconnected Components)
+Find the no. of Islands. ------(Technique: DFS, find Disconnected Components / DSU )
 Given a sorted Dictionary of an Alien Language, find order of characters. ------(Technique: Construct Graph and run topo sort)
 Implement Bellman Ford Algorithm
 Implement Floyd warshall Algorithm
@@ -24,10 +24,10 @@ Total no. of Spanning tree in a graph (Kirchhoff's theorem) n^(n-2)
 Travelling Salesman Problem.  ------(Technique: DP: Min weight permutation.)
 Graph Colouring Problem (No Adjacent Nodes should not be of same colors).
 Snake and Ladders Problem.
-Find bridge in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for back Edges)
+Find bridge in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for minimumTime and InsertionTime (BackEdges))<T>
 Find Articulation point/Cut-Vertex in a graph.(Tarjan's Algorithm)  ------(Technique: DFS: Check for back Edges)
 Count Strongly connected Components(Kosaraju Algo)
-Check whether a graph is Bipartite or Not.  ------(Technique: BFS with COLOR vector.)
+Check whether a graph is Bipartite or Not.  ------(Technique: NO odd length cycle | BFS with COLOR vector.)
 Detect Negative cycle in a graph.  ------(Technique: BellmanFord)
 The Longest path in a Directed Acyclic Graph.  ------(Technique: Topological sort)
 Journey to the Moon.  ------(Technique: DFS)
@@ -44,8 +44,9 @@ Number of Triangles in a Directed and Undirected Graph.    ------(Technique: Run
 Minimise the cash flow among a given set of friends who have borrowed money from each other.    ------(Technique: Greedy)
 Two Clique Problem.    ------(Technique: Transpose then Bipartite).
 
-
-
+47. Print Euler path in an undirected graph.
+48. Print Euler path in a directed graph.(Hierholzer's Algorithm)
+49. Cycle Detection with Union Find.
 
 
 
@@ -97,6 +98,16 @@ Directed Acyclic Graph (DAG) -
 
 1. Has Directed edges and no cycles.
 
+In-Degree -
+    Number of edges ends at a vertex.
+
+
+Out-Degree -
+    Number of edges with v as the initial vertex.
+
+
+
+
 
 
 Topological Sorting -
@@ -104,6 +115,11 @@ Topological Sorting -
 1. Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for
 every directed edge u v, vertex u comes before v in the ordering.
 2. Topological Sorting for a graph is not possible if the graph is not a DAG.
+3. Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs.
+4. Vertices with the least number of dependencies goes in the stack last.
+
+
+
 
 
 Dijkstra Algorithm -
@@ -112,6 +128,9 @@ Dijkstra Algorithm -
 2. You are given a directed or undirected weighted graph with n vertices and m edges.
 3. The weights of all edges are non-negative.
 4. You are also given a starting vertex s.
+
+
+
 
 
 Bellman-Ford Algorithm -
@@ -132,6 +151,8 @@ be modified to signal the presence of a cycle of negative weight, or even deduce
 
 
 
+
+
 Floyd-Warshall Algorithm -
 
 1. All source shortest path with NEGATIVE weight edges.
@@ -144,12 +165,17 @@ if at the end of the algorithm, the distance from a vertex v to itself is negati
 
 
 
+
+
 Spanning Tree -
 
 1. Given an undirected and connected graph, a spanning tree of the graph is a tree that includes all the Vertices
 of the graph.
 2. Spanning tree has all the V vertices has V-1 Edges.
 3. Every vertex is accessible from every other vertex.
+
+
+
 
 
 
@@ -168,6 +194,9 @@ which connects all vertices and has the least weight (i.e. the sum of weights of
 A spanning tree is a set of edges such that any vertex can reach any other by exactly one simple path.
 The spanning tree with the least weight is called a minimum spanning tree.
  1. Kruskal's Algorithm   2. Prim's Algorithm.
+
+
+
 
 
 
@@ -235,6 +264,22 @@ one unselected vertex. The process is repeated until the spanning tree contains 
 doesn't exist a spanning tree, so the number of selected edges will be less than n−1.
 
 
+
+Prim's vs Kruskal's:
+
+
+-   Kruskal time complexity worst case is O(E log E),this because we need to sort the edges. Prim time complexity worst
+    case is O(E log V) with priority queue or even better, O(E+V log V) with Fibonacci Heap. We should use Kruskal when
+    the graph is sparse, i.e.small number of edges,like E=O(V),when the edges are already sorted or if we can sort them
+    in linear time. We should use Prim when the graph is dense, i.e number of edges is high ,like E=O(V²).
+-   If we stop the algorithm in middle prim's algorithm always generates connected tree, but kruskal on the other hand
+    can give disconnected tree or forest.
+
+
+
+
+
+
 Hamiltonian Cycle -
 
 
@@ -296,6 +341,10 @@ Strongly Connected Components -
 1. A directed graph is strongly connected if there is a path between all pairs of vertices.
 2. A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph.
 3. We can find all strongly connected components in O(V+E) time using Kosaraju’s algorithm.
+
+
+
+
 
 
 

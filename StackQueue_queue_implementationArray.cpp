@@ -86,3 +86,12 @@ int main() {
 }
 
 
+/*
+10 enqueued to queue
+20 enqueued to queue
+30 enqueued to queue
+40 enqueued to queue
+10 dequeued from queue
+Front item is 20
+Rear item is 40
+ */

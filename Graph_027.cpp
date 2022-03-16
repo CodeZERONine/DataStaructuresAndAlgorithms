@@ -46,11 +46,14 @@ void dfs(int node,
                 cout<< node <<" "<< it<<endl;
             }
         }else{
+            // minimum insertion time amongst all the adjacent nodes
             minimumTime[node] = min(minimumTime[node], insertionTime[it]);
         }
     }
  }
 
+ /* minimumTime[adjacent] > insertionTime[node] means its a bridge. */
+ /* */
 int main() {
     Graph graph(5);
     graph.addEdgeU(0, 1);
@@ -69,5 +72,10 @@ int main() {
             dfs(i, -1, vis, insertionTime, minimumTime, timer, graph.adj);
         }
     }
+
+    /*
+     3 4
+     1 3
+    */
     return 0;
 }

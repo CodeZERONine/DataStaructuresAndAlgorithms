@@ -24,7 +24,7 @@ bool checkCycle(int node, Graph &graph, vector<int> &used, vector<int> &dfsUsed)
 
 bool isCyclic(int N, Graph &graph) {
     vector<int> used(N, 0);
-    vector<int> dfsUsed(N, 0);
+    vector<int> dfsUsed(N, 0); // we need to maintain a visited array for DFS Calls starting at every Node.
 
     for(int i = 0;i<N;i++) {
         if(!used[i]) {

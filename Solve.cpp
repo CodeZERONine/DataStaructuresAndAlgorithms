@@ -5,91 +5,81 @@
 
 using namespace std;
 
-struct Node {
-    int data;
-    struct Node *left, *right;
-
-    Node() {
-        data = 0;
-        left = nullptr;
-        right = nullptr;
+static int findParent(vector<int> &parent, int node) {
+    if (node == parent[node]) {
+        return node;
     }
 
-    Node(int key) {
-        data = key;
-        left = nullptr;
-        right = nullptr;
-    }
-
-    __attribute__((unused)) Node(int key, Node *left, Node *right) {
-        data = key;
-        this->left = left;
-        this->right = right;
-    }
-};
-
-struct ListNode {
-    int val;
-    ListNode *next;
-
-    ListNode() : val(0), next(nullptr) {}
-
-    ListNode(int x) : val(x), next(nullptr) {}
-
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-void addAtEnd(ListNode **head, int data) {
-
-    // Both ways of creating a Node object are fine.
-    auto *myNode = new ListNode(data);
-    ListNode myNode2(data);
-
-    ListNode *last = *head;
-
-    if (*head == nullptr) {
-        *head = myNode;
-        return;
-    }
-
-    while (last->next != nullptr) {
-        last = last->next;
-    }
-
-    last->next = myNode;
+    return parent[node] = findParent(parent, parent[node]);
 }
 
-void addAtStart(ListNode **head, int data){
-    auto myNode = new ListNode(data);
-    myNode->next = *head;
-    *head = myNode;
+static bool unionn(vector<int> &parent, vector<int> &rank, int u, int v) {
+
+    u = findParent(parent, u);
+    v = findParent(parent, v);
+
+
+    if (u == v) {
+        return false;
+    }
+
+    if (rank[u] < rank[v]) {
+        parent[u] = v;
+    } else if (rank[u] > rank[v]) {
+        parent[v] = u;
+    } else {
+        parent[v] = u;
+        rank[u]++;
+    }
+    return true;
+
 }
 
+int removeStones(vector<vector<int>> &stones) {
+    int N = stones.size();
 
-void printLL(ListNode *head) {
-    ListNode *curr = head;
-    while (curr != nullptr) {
-        cout << curr->val << " ";
-        curr = curr->next;
+    // parent
+    vector<int> parent(N);
+    for (int i = 0; i < N; i++) {
+        parent[i] = i;
     }
-    cout << endl;
+
+    // rank
+    vector<int> rank(N + 1, 0);
+
+
+//    // make union
+//    for (int i = 0; i < N; i++) {
+//        if (findParent(parent, stones[i][0]) != findParent(parent, stones[i][1])) {
+//            //make union
+//            unionn(parent, rank, stones[i][0], stones[i][1]);
+//        }
+//    }
+
+    int count = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = i + 1; j < N; j++) {
+            if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                if (unionn(parent, rank, i,j)) {
+                    count++;
+                }
+            }
+        }
+    }
+
+
+    return count;
 }
 
 
 int main() {
-    ListNode *head = nullptr;
-    addAtEnd(&head, 1);
-    addAtEnd(&head, 2);
-    addAtEnd(&head, 4);
-    addAtEnd(&head, 3);
-
-    ListNode *head1 = nullptr;
-    addAtEnd(&head1, 9);
-    addAtEnd(&head1, 9);
-    //addAtEnd(&head1, 4);
-    printLL(head); printLL(head1);
-
-    printLL(addTwoNumbers(head,head1));
+    vector<vector<int>> v = {{0, 0},
+                             {0, 1},
+                             {1, 0},
+                             {1, 2},
+                             {2, 1},
+                             {2, 2}};
+    cout << removeStones(v); // 5
 
     return 0;
 }

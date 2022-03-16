@@ -79,5 +79,11 @@ int main(){
     int source = 0;
 
     dijkstras(graph,source);
+
+    /*
+        The Distance from source, 0, are:
+        4 12 19 21 11 9 8 14
+    */
+
     return 0;
 }

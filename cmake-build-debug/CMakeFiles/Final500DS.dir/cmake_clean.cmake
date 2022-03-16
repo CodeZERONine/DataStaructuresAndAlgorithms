@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Final500DS.dir/BST_000.cpp.o"
+  "CMakeFiles/Final500DS.dir/S&Q_004.cpp.o"
   "Final500DS"
   "Final500DS.pdb"
 )

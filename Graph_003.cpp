@@ -33,16 +33,21 @@ void DFSUtil(int u, Graph &graph, vector<bool> &used){
     used[u] = true;
     cout<<u<<" -> ";
 
-    for(int i = 0 ; i < graph.adj[u].size(); i++){
-        if(!used[graph.adj[u][i]]){
-            DFSUtil(graph.adj[u][i], graph, used);
+//    for(int i = 0 ; i < graph.adj[u].size(); i++){
+//        if(!used[graph.adj[u][i]]){
+//            DFSUtil(graph.adj[u][i], graph, used);
+//        }
+//    }
+    for(auto it: graph.adj[u]){
+        if(!used[it]){
+            DFSUtil(it, graph, used);
         }
     }
 }
 
 void traverseDFS(Graph &graph){
     vector<bool> used(graph.V, false);
-    for(int u = 0; u < graph.V; u++){
+    for(int u = 0; u < graph.V; u++){ // We need this for loop to cover all vertices(even if some of them are disconnected).
         if(!used[u]){
             DFSUtil(u, graph, used);
         }
@@ -60,7 +65,7 @@ int main(){
     graph.addEdge(3, 4);
 
     cout << "Following is Depth First Traversal"<<endl;
-    traverseDFS(graph);
+    traverseDFS(graph); //0 -> 1 -> 2 -> 3 -> 4 ->
 
     return 0;
 }

@@ -12,11 +12,17 @@ using namespace std;
 void floyd_warshall(int graph[V][V]) {
     int dis[V][V];
     int i, j, k;
+    vector<vector<int>> dist{V, vector<int>(V)};
 
     for (i = 0; i < V; i++) {
         for (j = 0; j < V; j++)
             dis[i][j] = graph[i][j];
+            dist[i][j] = graph[i][j];
     }
+
+
+
+    // Find the min distance between i and j via k.
 
     for (k = 0; k < V; k++) {
         for (i = 0; i < V; i++) {
