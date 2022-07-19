@@ -4,23 +4,25 @@
 04. 0-1 Knapsack.(Top-Down)
 05. Subset sum.
 06. Equal sum partition.
-07. Count of subset sum with a given sum.
-08. Minimum subset sum difference.
-09. Count of subset sum with a given sum.
-10. Count the number of subset with a given difference.
+07. Count of subset sum with a given sum.(Memoization)
+08. Minimum subset sum difference.(Memoization)
+09. Count of subset sum with a given sum.(Top-Down)
+10. Count the number of subset with a given difference.(Top-Down)
 11. Target Sum. ---Technique(Count the number of subset with a given difference.)
 
-13. Unbound Knapsack - 04Q
+13. Unbound Knapsack - 06Q
 14. Rod Cutting.
 15. Coin Change 1- Max Ways.
-16. Coin Change 2- Min Coins. 77. Count number of ways to reach a given score in a game
+16. Coin Change 2- Min Coins.
+77. Count number of ways to reach a given score in a game
+96. Subset sum with repeating sum.
 
 18. Longest Common Sub-Sequence - 10Q
 
 20. Longest Common Subsequence.(Memoization)
 21. Longest Common Subsequence.(Top-Down)
 22. Longest Common Sub-String.
-23. Print longest common subsequence.
+23. Print longest common subsequence.(Top-Down and Trace back)
 24. Shortest Common super-sequence.
 25. Print Shortest Common super-sequence.------ Similar to Print LCS.
 26. Min. number of insertions and deletions to convert a string X to Y.
@@ -119,7 +121,7 @@ Greedy - DP + Bottom Up DP
 84. Optimal Strategy for a Game.
 
 
-Matrix
+Matrix/DP on Grids
 
 71. Largest square formed in a matrix/ Max. Sq. in a Matrix.
 85. Maximum sum rectangle in a 2D matrix.

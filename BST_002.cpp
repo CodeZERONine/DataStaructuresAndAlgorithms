@@ -66,12 +66,13 @@ Node *deleteNode(Node *root, int key) {
     }
 
     if (key < root->data) {
-        deleteNode(root->left, key);
+        root->left = deleteNode(root->left, key);
     } else if (key > root->data) {
-        deleteNode(root->right, key);
+        root->right = deleteNode(root->right, key);
     } else {
         /// Case 1: No Children - Leaf Node:
         if (root->left == nullptr and root->right == nullptr) {
+            //free(root);
             return nullptr;
         }
 
@@ -120,25 +121,41 @@ int main() {
 
     cout << "Inorder traversal of the given tree \n";
     inOrder(root);
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout << "Case 1:Leaf Node: Delete 20" << endl;
     root = deleteNode(root, 20);
     cout << "Inorder traversal of the modified tree \n";
     inOrder(root);
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout << "Case 2:Node with one child:  Delete 30" << endl;
     root = deleteNode(root, 30);
     cout << "Inorder traversal of the modified tree \n";
     inOrder(root);
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout << "Case 3:Node with two children: Delete 50" << endl;
     root = deleteNode(root, 50);
     cout << "Inorder traversal of the modified tree \n";
     inOrder(root);
-    cout<<endl;
+    cout<<endl<<endl;
 
     return 0;
 }
+
+/*
+
+Inorder traversal of the given tree
+20 30 40 50 60 70 80
+Case 1:Leaf Node: Delete 20
+Inorder traversal of the modified tree
+20 30 40 50 60 70 80
+Case 2:Node with one child:  Delete 30
+Inorder traversal of the modified tree
+20 40 50 60 70 80
+Case 3:Node with two children: Delete 50
+Inorder traversal of the modified tree
+20 40 60 60 70 80
+
+ */

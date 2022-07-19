@@ -5,81 +5,26 @@
 
 using namespace std;
 
-static int findParent(vector<int> &parent, int node) {
-    if (node == parent[node]) {
-        return node;
+int maxProduct(int index, vector<int> arr, int prod) {
+    if (index >= arr.size()) {
+        return 1;
     }
 
-    return parent[node] = findParent(parent, parent[node]);
-}
+    int l = arr[index] * maxProduct(index + 1, arr, prod * arr[index]);
+    int r = arr[index];
 
-static bool unionn(vector<int> &parent, vector<int> &rank, int u, int v) {
-
-    u = findParent(parent, u);
-    v = findParent(parent, v);
-
-
-    if (u == v) {
-        return false;
+    if (prod < max(l, r)) {
+        prod = max(l, r);
     }
-
-    if (rank[u] < rank[v]) {
-        parent[u] = v;
-    } else if (rank[u] > rank[v]) {
-        parent[v] = u;
-    } else {
-        parent[v] = u;
-        rank[u]++;
-    }
-    return true;
-
-}
-
-int removeStones(vector<vector<int>> &stones) {
-    int N = stones.size();
-
-    // parent
-    vector<int> parent(N);
-    for (int i = 0; i < N; i++) {
-        parent[i] = i;
-    }
-
-    // rank
-    vector<int> rank(N + 1, 0);
-
-
-//    // make union
-//    for (int i = 0; i < N; i++) {
-//        if (findParent(parent, stones[i][0]) != findParent(parent, stones[i][1])) {
-//            //make union
-//            unionn(parent, rank, stones[i][0], stones[i][1]);
-//        }
-//    }
-
-    int count = 0;
-    for (int i = 0; i < N; i++) {
-        for (int j = i + 1; j < N; j++) {
-            if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
-                if (unionn(parent, rank, i,j)) {
-                    count++;
-                }
-            }
-        }
-    }
-
-
-    return count;
+    return prod;
 }
 
 
 int main() {
-    vector<vector<int>> v = {{0, 0},
-                             {0, 1},
-                             {1, 0},
-                             {1, 2},
-                             {2, 1},
-                             {2, 2}};
-    cout << removeStones(v); // 5
+    vector<int> arr = {6, -3, -10, 0, 2}; // 180  // The subarray is {6, -3, -10}
+    vector<int> arr2 = {-1, -3, -10, 0, 60}; // 60  // The subarray is {60}
+    vector<int> arr3 = {-2, -40, 0, -2, -3}; // 80  // The subarray is {-2, -40}
 
+    cout << maxProduct(0, arr3, 1);
     return 0;
 }

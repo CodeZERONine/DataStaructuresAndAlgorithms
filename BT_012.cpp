@@ -28,6 +28,8 @@ struct Node {
     }
 };
 
+// with respect to the vertical distance from root.
+// <horizontalDistance, <nodeValue, level>>
 void findMinMaxDistance(Node *root, int  hd, int level , map<int, pair<int, int> > &m) {
     if (root == nullptr) {
         return;

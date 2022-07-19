@@ -6,6 +6,8 @@
 //method 3:  - Use an STL ordered Map
 
 //method 4: Quick Select : Average case complexity: n, worst case : n2
+// Quickselect is a selection algorithm to find the k-th smallest element in an unordered list.
+
 #include<stdc++.h>
 
 using namespace std;

@@ -2,9 +2,6 @@
 // Created by Akshansh Gusain on 21/02/22.
 //
 
-//
-// Created by Akshansh Gusain on 17/02/22.
-//
 #include<stdc++.h>
 
 using namespace std;

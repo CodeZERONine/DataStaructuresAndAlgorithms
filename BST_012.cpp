@@ -144,10 +144,10 @@ Node *mergeTrees(Node *root1, Node *root2, int m, int n) {
 int main() {
 /* Create following tree as first balanced BST
         100
-        / \
-        50 300
-    / \
-    20 70
+       /    \
+     50     300
+    /  \
+  20    70
     */
     Node *root1 = new Node(100);
     root1->left = new Node(50);
@@ -157,8 +157,8 @@ int main() {
 
     /* Create following tree as second balanced BST
             80
-        / \
-        40 120
+          /    \
+        40     120
     */
     Node *root2 = new Node(80);
     root2->left = new Node(40);

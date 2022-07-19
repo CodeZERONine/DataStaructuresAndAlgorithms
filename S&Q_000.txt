@@ -2,3 +2,8 @@
 02. Implement Stack - LinkedList.
 03. Implement Queue - LinkedList.
 04. Implement Queue - Array
+05- Implement 2 Stacks in an Array ---(Technique: Divide the space in two halves).
+06- Implement 2 Stacks in an Array ---(Technique: start two stacks from two extreme corners of arr[]).
+07- Implement a Stack with FindMiddleElement function. ---(Technique: sing DLL)
+08- Implement N Stacks in an array.
+09- Check the expression has valid parenthesis or not.

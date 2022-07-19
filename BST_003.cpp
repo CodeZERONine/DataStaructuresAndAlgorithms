@@ -68,6 +68,13 @@ Node *findMax(Node *root){
     return current;
 }
 
+Node *findMin2(Node *root){
+    if(root->left == nullptr){
+        return root;
+    }
+    return findMin2(root->left);
+}
+
 int main() {
     /* Let us create following BST
             50
@@ -85,8 +92,8 @@ int main() {
     insertInBST(root, 60);
     insertInBST(root, 80);
 
-    cout<<findMin(root)->data;
-    cout<<findMax(root)->data;
+    cout<<findMin2(root)->data<<endl;
+    cout<<findMax(root)->data<<endl;
 
     return 0;
 }
